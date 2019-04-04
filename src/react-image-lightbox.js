@@ -1774,6 +1774,7 @@ ReactImageLightbox.propTypes = {
 };
 
 ReactImageLightbox.defaultProps = {
+  isVideoFile: false,
   imageTitle: null,
   imageCaption: null,
   toolbarButtons: null,

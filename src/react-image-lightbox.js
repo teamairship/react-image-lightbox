@@ -1394,8 +1394,7 @@ class ReactImageLightbox extends Component {
               Your browser does not support the video tag.
             </video>
           );
-        }
-        else {
+        } else {
           images.push(
             <img
               {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}

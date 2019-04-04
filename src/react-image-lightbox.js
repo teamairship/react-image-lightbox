@@ -1424,6 +1424,7 @@ class ReactImageLightbox extends Component {
       images.push(
         <video
           controls
+          autoplay
           key={imageSrc + keyEndings[srcType]}
           className={`${imageClass} ril__image`}
           style={imageStyle}

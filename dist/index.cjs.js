@@ -1751,6 +1751,7 @@ function (_Component) {
 
         images.push(React__default.createElement("video", {
           controls: true,
+          autoplay: true,
           key: imageSrc + keyEndings[srcType],
           className: "".concat(imageClass, " ril__image"),
           style: imageStyle

@@ -1749,7 +1749,6 @@ function (_Component) {
           imageStyle.cursor = 'move';
         }
 
-        console.log('videoProps', _this16.props.videoProps);
         images.push(React__default.createElement("video", _extends({
           key: imageSrc + keyEndings[srcType],
           className: "".concat(imageClass, " ril__image"),

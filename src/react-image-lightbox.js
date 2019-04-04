@@ -1421,8 +1421,6 @@ class ReactImageLightbox extends Component {
         imageStyle.cursor = 'move';
       }
 
-      console.log('videoProps', this.props.videoProps);
-
       images.push(
         <video
           key={imageSrc + keyEndings[srcType]}

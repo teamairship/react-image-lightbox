@@ -1720,36 +1720,38 @@ function (_Component) {
             className: "ril-download-blocker ril__downloadBlocker"
           })));
         } else {
-          if (_this16.props.isVideoFile) {
-            images.push(React__default.createElement("video", {
-              controls: true
-            }, React__default.createElement("source", {
-              src: imageSrc
-            }), "Your browser does not support the video tag."));
-          } else {
-            images.push(React__default.createElement("img", _extends({}, imageCrossOrigin ? {
-              crossOrigin: imageCrossOrigin
-            } : {}, {
-              className: "".concat(imageClass, " ril__image"),
-              onDoubleClick: _this16.handleImageDoubleClick,
-              onWheel: _this16.handleImageMouseWheel,
-              onDragStart: function onDragStart(e) {
-                return e.preventDefault();
-              },
-              style: imageStyle,
-              src: imageSrc,
-              key: imageSrc + keyEndings[srcType],
-              alt: typeof imageTitle === 'string' ? imageTitle : translate('Image'),
-              draggable: false
-            })));
-          }
+          images.push(React__default.createElement("img", _extends({}, imageCrossOrigin ? {
+            crossOrigin: imageCrossOrigin
+          } : {}, {
+            className: "".concat(imageClass, " ril__image"),
+            onDoubleClick: _this16.handleImageDoubleClick,
+            onWheel: _this16.handleImageMouseWheel,
+            onDragStart: function onDragStart(e) {
+              return e.preventDefault();
+            },
+            style: imageStyle,
+            src: imageSrc,
+            key: imageSrc + keyEndings[srcType],
+            alt: typeof imageTitle === 'string' ? imageTitle : translate('Image'),
+            draggable: false
+          })));
         }
       };
 
-      var addVideo = function addVideo(srcType) {
+      var addVideo = function addVideo(srcType, imageClass, transforms) {
         var imageSrc = _this16.props[srcType];
+
+        var imageStyle = _objectSpread({}, transitionStyle, ReactImageLightbox.getTransform(_objectSpread({}, transforms)));
+
+        if (zoomLevel > MIN_ZOOM_LEVEL) {
+          imageStyle.cursor = 'move';
+        }
+
         images.push(React__default.createElement("video", {
-          controls: true
+          controls: true,
+          key: imageSrc + keyEndings[srcType],
+          className: "".concat(imageClass, " ril__image"),
+          style: imageStyle
         }, React__default.createElement("source", {
           src: imageSrc
         }), "Your browser does not support the video tag."));
@@ -1762,7 +1764,11 @@ function (_Component) {
       }); // Main Image
 
       if (this.props.isVideoFile) {
-        addVideo('mainSrc');
+        addVideo('mainSrc', 'ril-image-current', {
+          x: -1 * offsetX,
+          y: -1 * offsetY,
+          zoom: zoomMultiplier
+        });
       } else {
         addImage('mainSrc', 'ril-image-current', {
           x: -1 * offsetX,

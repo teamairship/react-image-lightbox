@@ -1387,39 +1387,46 @@ class ReactImageLightbox extends Component {
           </div>
         );
       } else {
-        if (this.props.isVideoFile) {
-          images.push(
-            <video controls>
-              <source src={imageSrc} />
-              Your browser does not support the video tag.
-            </video>
-          );
-        } else {
-          images.push(
-            <img
-              {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}
-              className={`${imageClass} ril__image`}
-              onDoubleClick={this.handleImageDoubleClick}
-              onWheel={this.handleImageMouseWheel}
-              onDragStart={e => e.preventDefault()}
-              style={imageStyle}
-              src={imageSrc}
-              key={imageSrc + keyEndings[srcType]}
-              alt={
-                typeof imageTitle === 'string' ? imageTitle : translate('Image')
-              }
-              draggable={false}
-            />
-          );
-        }
+        images.push(
+          <img
+            {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}
+            className={`${imageClass} ril__image`}
+            onDoubleClick={this.handleImageDoubleClick}
+            onWheel={this.handleImageMouseWheel}
+            onDragStart={e => e.preventDefault()}
+            style={imageStyle}
+            src={imageSrc}
+            key={imageSrc + keyEndings[srcType]}
+            alt={
+              typeof imageTitle === 'string' ? imageTitle : translate('Image')
+            }
+            draggable={false}
+          />
+        );
       }
     };
 
-    const addVideo = (srcType) => {
+    const addVideo = (srcType, imageClass, transforms) => {
       let imageSrc = this.props[srcType];
 
+      const imageStyle = {
+        ...transitionStyle,
+        ...ReactImageLightbox.getTransform({
+          ...transforms,
+        }),
+      };
+
+      if (zoomLevel > MIN_ZOOM_LEVEL) {
+        imageStyle.cursor = 'move';
+      }
+
       images.push(
-        <video controls>
+        <video
+          controls
+          key={imageSrc + keyEndings[srcType]}
+          className={`${imageClass} ril__image`}
+          style={imageStyle}
+        >
           <source src={imageSrc} />
           Your browser does not support the video tag.
         </video>
@@ -1434,7 +1441,11 @@ class ReactImageLightbox extends Component {
 
     // Main Image
     if (this.props.isVideoFile) {
-      addVideo('mainSrc');
+      addVideo('mainSrc', 'ril-image-current', {
+        x: -1 * offsetX,
+        y: -1 * offsetY,
+        zoom: zoomMultiplier,
+      });
     }
     else {
       addImage('mainSrc', 'ril-image-current', {

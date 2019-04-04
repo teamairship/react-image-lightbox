@@ -1387,22 +1387,32 @@ class ReactImageLightbox extends Component {
           </div>
         );
       } else {
-        images.push(
-          <img
-            {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}
-            className={`${imageClass} ril__image`}
-            onDoubleClick={this.handleImageDoubleClick}
-            onWheel={this.handleImageMouseWheel}
-            onDragStart={e => e.preventDefault()}
-            style={imageStyle}
-            src={imageSrc}
-            key={imageSrc + keyEndings[srcType]}
-            alt={
-              typeof imageTitle === 'string' ? imageTitle : translate('Image')
-            }
-            draggable={false}
-          />
-        );
+        if (this.props.isVideoFile) {
+          images.push(
+            <video controls>
+              <source src={imageSrc} >
+              Your browser does not support the video tag.
+            </video>
+          );
+        }
+        else {
+          images.push(
+            <img
+              {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}
+              className={`${imageClass} ril__image`}
+              onDoubleClick={this.handleImageDoubleClick}
+              onWheel={this.handleImageMouseWheel}
+              onDragStart={e => e.preventDefault()}
+              style={imageStyle}
+              src={imageSrc}
+              key={imageSrc + keyEndings[srcType]}
+              alt={
+                typeof imageTitle === 'string' ? imageTitle : translate('Image')
+              }
+              draggable={false}
+            />
+          );
+        }
       }
     };
 
@@ -1624,6 +1634,9 @@ ReactImageLightbox.propTypes = {
   //-----------------------------
   // Image sources
   //-----------------------------
+
+  // If set to true then it will display a video tag instead of an image tag
+  isVideoFile: PropTypes.bool,
 
   // Main display image url
   mainSrc: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types

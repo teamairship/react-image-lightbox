@@ -1410,6 +1410,7 @@ class ReactImageLightbox extends Component {
       let imageSrc = this.props[srcType];
 
       const imageStyle = {
+        zIndex: 99999,
         ...transitionStyle,
         ...ReactImageLightbox.getTransform({
           ...transforms,

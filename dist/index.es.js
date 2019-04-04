@@ -1734,7 +1734,9 @@ function (_Component) {
       var addVideo = function addVideo(srcType, imageClass, transforms) {
         var imageSrc = _this16.props[srcType];
 
-        var imageStyle = _objectSpread({}, transitionStyle, ReactImageLightbox.getTransform(_objectSpread({}, transforms)));
+        var imageStyle = _objectSpread({
+          zIndex: 99999
+        }, transitionStyle, ReactImageLightbox.getTransform(_objectSpread({}, transforms)));
 
         if (zoomLevel > MIN_ZOOM_LEVEL) {
           imageStyle.cursor = 'move';

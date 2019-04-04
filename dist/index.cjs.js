@@ -1749,12 +1749,12 @@ function (_Component) {
           imageStyle.cursor = 'move';
         }
 
+        console.log('videoProps', _this16.props.videoProps);
         images.push(React__default.createElement("video", _extends({
-          controls: true,
           key: imageSrc + keyEndings[srcType],
           className: "".concat(imageClass, " ril__image"),
           style: imageStyle
-        }, videoProps), React__default.createElement("source", {
+        }, _this16.props.videoProps), React__default.createElement("source", {
           src: imageSrc
         }), "Your browser does not support the video tag."));
       };

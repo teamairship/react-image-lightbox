@@ -1421,13 +1421,14 @@ class ReactImageLightbox extends Component {
         imageStyle.cursor = 'move';
       }
 
+      console.log('videoProps', this.props.videoProps);
+
       images.push(
         <video
-          controls
           key={imageSrc + keyEndings[srcType]}
           className={`${imageClass} ril__image`}
           style={imageStyle}
-          {...videoProps}
+          {...this.props.videoProps}
         >
           <source src={imageSrc} />
           Your browser does not support the video tag.

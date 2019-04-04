@@ -1746,17 +1746,31 @@ function (_Component) {
         }
       };
 
+      var addVideo = function addVideo(srcType) {
+        var imageSrc = _this16.props[srcType];
+        images.push(React__default.createElement("video", {
+          controls: true
+        }, React__default.createElement("source", {
+          src: imageSrc
+        }), "Your browser does not support the video tag."));
+      };
+
       var zoomMultiplier = this.getZoomMultiplier(); // Next Image (displayed on the right)
 
       addImage('nextSrc', 'ril-image-next ril__imageNext', {
         x: boxSize.width
       }); // Main Image
 
-      addImage('mainSrc', 'ril-image-current', {
-        x: -1 * offsetX,
-        y: -1 * offsetY,
-        zoom: zoomMultiplier
-      }); // Previous Image (displayed on the left)
+      if (this.props.isVideoFile) {
+        addVideo('mainSrc');
+      } else {
+        addImage('mainSrc', 'ril-image-current', {
+          x: -1 * offsetX,
+          y: -1 * offsetY,
+          zoom: zoomMultiplier
+        });
+      } // Previous Image (displayed on the left)
+
 
       addImage('prevSrc', 'ril-image-prev ril__imagePrev', {
         x: -1 * boxSize.width

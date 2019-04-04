@@ -1390,7 +1390,7 @@ class ReactImageLightbox extends Component {
         if (this.props.isVideoFile) {
           images.push(
             <video controls>
-              <source src={imageSrc} >
+              <source src={imageSrc} />
               Your browser does not support the video tag.
             </video>
           );

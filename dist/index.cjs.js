@@ -1749,13 +1749,12 @@ function (_Component) {
           imageStyle.cursor = 'move';
         }
 
-        images.push(React__default.createElement("video", {
+        images.push(React__default.createElement("video", _extends({
           controls: true,
-          autoplay: true,
           key: imageSrc + keyEndings[srcType],
           className: "".concat(imageClass, " ril__image"),
           style: imageStyle
-        }, React__default.createElement("source", {
+        }, videoProps), React__default.createElement("source", {
           src: imageSrc
         }), "Your browser does not support the video tag."));
       };
@@ -1928,6 +1927,7 @@ ReactImageLightbox.propTypes = {
   //-----------------------------
   // If set to true then it will display a video tag instead of an image tag
   isVideoFile: PropTypes.bool,
+  videoProps: PropTypes.shape({}),
   // Main display image url
   mainSrc: PropTypes.string.isRequired,
   // eslint-disable-line react/no-unused-prop-types
@@ -2031,6 +2031,7 @@ ReactImageLightbox.propTypes = {
 };
 ReactImageLightbox.defaultProps = {
   isVideoFile: false,
+  videoProps: {},
   imageTitle: null,
   imageCaption: null,
   toolbarButtons: null,

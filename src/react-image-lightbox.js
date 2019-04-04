@@ -1424,10 +1424,10 @@ class ReactImageLightbox extends Component {
       images.push(
         <video
           controls
-          autoplay
           key={imageSrc + keyEndings[srcType]}
           className={`${imageClass} ril__image`}
           style={imageStyle}
+          {...videoProps}
         >
           <source src={imageSrc} />
           Your browser does not support the video tag.
@@ -1667,6 +1667,8 @@ ReactImageLightbox.propTypes = {
   // If set to true then it will display a video tag instead of an image tag
   isVideoFile: PropTypes.bool,
 
+  videoProps: PropTypes.shape({}),
+
   // Main display image url
   mainSrc: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
 
@@ -1804,6 +1806,7 @@ ReactImageLightbox.propTypes = {
 
 ReactImageLightbox.defaultProps = {
   isVideoFile: false,
+  videoProps: {},
   imageTitle: null,
   imageCaption: null,
   toolbarButtons: null,

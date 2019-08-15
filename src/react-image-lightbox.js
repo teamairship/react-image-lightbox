@@ -1431,7 +1431,7 @@ class ReactImageLightbox extends Component {
           src={imageSrc}
           {...this.props.videoProps}
         >
-          <ControlBar autoHide={false} className="video-player-control-bar" />
+          <ControlBar autoHide={this.props.videoProps.autoHide || false} className="video-player-control-bar" />
         </Player>
       );
     }

@@ -1749,7 +1749,7 @@ function (_Component) {
           style: imageStyle,
           src: imageSrc
         }, _this16.props.videoProps), React.createElement(ControlBar, {
-          autoHide: false,
+          autoHide: _this16.props.videoProps.autoHide || false,
           className: "video-player-control-bar"
         })));
       };

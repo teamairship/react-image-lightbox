@@ -1751,9 +1751,9 @@ function (_Component) {
         }
 
         images.push(React__default.createElement(videoReact.Player, _extends({
-          key: imageSrc + keyEndings[srcType],
-          className: "".concat(imageClass, " ril__image"),
-          style: imageStyle,
+          key: imageSrc + keyEndings[srcType] //className={`${imageClass} ril__image`}
+          //style={imageStyle}
+          ,
           src: imageSrc
         }, _this16.props.videoProps), React__default.createElement(videoReact.ControlBar, {
           autoHide: false,

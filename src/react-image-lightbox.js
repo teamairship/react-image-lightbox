@@ -1426,8 +1426,8 @@ class ReactImageLightbox extends Component {
       images.push(
         <Player 
           key={imageSrc + keyEndings[srcType]}
-          //className={`${imageClass} ril__image`}
-          //style={imageStyle}
+          className={`${imageClass} ril__image`}
+          style={imageStyle}
           src={imageSrc}
           {...this.props.videoProps}
         >

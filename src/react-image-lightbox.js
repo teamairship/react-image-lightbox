@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Player, ControlBar } from 'video-react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import {
@@ -1422,15 +1423,15 @@ class ReactImageLightbox extends Component {
       }
 
       images.push(
-        <video
+        <Player 
           key={imageSrc + keyEndings[srcType]}
           className={`${imageClass} ril__image`}
           style={imageStyle}
+          src={imageSrc}
           {...this.props.videoProps}
         >
-          <source src={imageSrc} />
-          Your browser does not support the video tag.
-        </video>
+          <ControlBar autoHide={false} className="video-player-control-bar" />
+        </Player>
       );
     }
 

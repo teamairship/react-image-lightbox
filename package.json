@@ -62,7 +62,7 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react-modal": "^3.8.1",
-    "react-video": "^1.5.3"
+    "video-react": "^0.14.1"
   },
   "peerDependencies": {
     "react": "^16.x",

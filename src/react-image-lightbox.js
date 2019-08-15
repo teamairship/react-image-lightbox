@@ -27,6 +27,7 @@ import {
   MIN_SWIPE_DISTANCE,
 } from './constant';
 import './style.css';
+import "node_modules/video-react/dist/video-react.css";
 
 class ReactImageLightbox extends Component {
   static isTargetMatchImage(target) {

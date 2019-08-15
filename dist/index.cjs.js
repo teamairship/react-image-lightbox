@@ -9,6 +9,7 @@ var React__default = _interopDefault(React);
 var videoReact = require('video-react');
 var PropTypes = _interopDefault(require('prop-types'));
 var Modal = _interopDefault(require('react-modal'));
+require('node_modules/video-react/dist/video-react.css');
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {

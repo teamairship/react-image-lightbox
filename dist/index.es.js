@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Player, ControlBar } from 'video-react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
@@ -1742,13 +1743,15 @@ function (_Component) {
           imageStyle.cursor = 'move';
         }
 
-        images.push(React.createElement("video", _extends({
+        images.push(React.createElement(Player, _extends({
           key: imageSrc + keyEndings[srcType],
           className: "".concat(imageClass, " ril__image"),
-          style: imageStyle
-        }, _this16.props.videoProps), React.createElement("source", {
+          style: imageStyle,
           src: imageSrc
-        }), "Your browser does not support the video tag."));
+        }, _this16.props.videoProps), React.createElement(ControlBar, {
+          autoHide: false,
+          className: "video-player-control-bar"
+        })));
       };
 
       var zoomMultiplier = this.getZoomMultiplier(); // Next Image (displayed on the right)

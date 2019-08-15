@@ -6,6 +6,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
+var videoReact = require('video-react');
 var PropTypes = _interopDefault(require('prop-types'));
 var Modal = _interopDefault(require('react-modal'));
 
@@ -1749,13 +1750,15 @@ function (_Component) {
           imageStyle.cursor = 'move';
         }
 
-        images.push(React__default.createElement("video", _extends({
+        images.push(React__default.createElement(videoReact.Player, _extends({
           key: imageSrc + keyEndings[srcType],
           className: "".concat(imageClass, " ril__image"),
-          style: imageStyle
-        }, _this16.props.videoProps), React__default.createElement("source", {
+          style: imageStyle,
           src: imageSrc
-        }), "Your browser does not support the video tag."));
+        }, _this16.props.videoProps), React__default.createElement(videoReact.ControlBar, {
+          autoHide: false,
+          className: "video-player-control-bar"
+        })));
       };
 
       var zoomMultiplier = this.getZoomMultiplier(); // Next Image (displayed on the right)

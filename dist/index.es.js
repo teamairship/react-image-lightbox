@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Player, ControlBar } from 'video-react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import 'node_modules/video-react/dist/video-react.css';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {

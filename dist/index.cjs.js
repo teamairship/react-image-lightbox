@@ -1757,6 +1757,7 @@ function (_Component) {
           src: imageSrc
         }, _this16.props.videoProps), React__default.createElement(videoReact.ControlBar, {
           autoHide: _this16.props.videoProps.autoHide || false,
+          autoHideTime: _this16.props.videoProps.autoHideTime || 3000,
           className: "video-player-control-bar"
         })));
       };
